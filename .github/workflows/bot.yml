@@ -1,0 +1,23 @@
+name: Schnauzer Alert Bot
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install packages
+        run: pip install requests
+
+      - name: Run bot
+        run: python bot.py
