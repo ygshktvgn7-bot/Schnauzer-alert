@@ -1,18 +1,19 @@
 name: Schnauzer Alert Bot
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:   # Allows manual "Run workflow"
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 * * * *'  # Optional: runs every hour
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Install Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
